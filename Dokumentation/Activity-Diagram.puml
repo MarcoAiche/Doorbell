@@ -1,0 +1,55 @@
+@startuml Aktivitaetsdiagramm
+
+|Person|
+    start
+    :Klingelt;
+|Person|
+
+|Raspberry Pi|
+:Buzzer ein;
+|Raspberry Pi|
+
+|Kamera|
+    :Nimmt Foto auf;
+|Kamera|
+
+|Raspberry Pi|
+    :Buzzer aus;
+    :Face Recognition;
+    if(Face Recognition erfolgreich) then (ja)
+        |Tür|
+            :Öffnet sich;
+        |Tür|
+        |Raspberry Pi|
+            :LED Grün;
+        |Raspberry Pi|
+        stop
+    else (nein)
+    |Telegram|
+        :Bekommt Bild von Kamera;
+    |Telegram|
+
+    |Hausbewohner|
+        :Bekommt Nachricht von Telegram;
+        if(Lässt Person rein) then (ja) 
+            |Tür|
+                :Öffnet sich;
+            |Tür|
+            |Raspberry Pi|
+                :LED Grün;
+            |Raspberry Pi|
+        else (nein)
+            |Tür|
+                :Bleibt geschlossen;
+                :;
+            |Tür|
+            |Raspberry Pi|
+                :LED Rot;
+            |Raspberry Pi|
+        endif
+    |Hausbewohner|
+    stop
+|Raspberry Pi|
+
+
+@enduml

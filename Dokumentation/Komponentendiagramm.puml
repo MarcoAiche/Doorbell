@@ -1,0 +1,25 @@
+@startuml Komponentendiagramm
+package "Raspberry Pi System" {
+  [BuzzerComponent]
+  [RelayComponent]
+  [ButtonComponent]
+  [CameraComponent]
+  [TelegramBotComponent]
+  [RaspberryPiComponent]
+  [FaceRecognition]
+}
+
+[BuzzerComponent] --> [Buzzer]
+[RelayComponent] --> [Relay]
+[ButtonComponent] --> [Button]
+[CameraComponent] --> [Camera]
+[TelegramBotComponent] --> [TelegramBot]
+
+[RaspberryPiComponent] --> [BuzzerComponent]
+[RaspberryPiComponent] --> [RelayComponent]
+[RaspberryPiComponent] --> [ButtonComponent]
+[RaspberryPiComponent] --> [CameraComponent]
+[RaspberryPiComponent] --> [TelegramBotComponent]
+[RaspberryPiComponent] --> [FaceRecognition]
+
+@enduml

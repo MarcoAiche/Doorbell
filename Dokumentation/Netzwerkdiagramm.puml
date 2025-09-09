@@ -1,0 +1,13 @@
+@startuml Netzwerkdiagramm
+cloud Telegram {
+  [Telegram Server]
+}
+
+package "Local Network" {
+  [Raspberry Pi] --> [Router]
+  [Router] --> Internet
+}
+
+[Telegram Server] --> Internet
+
+@enduml

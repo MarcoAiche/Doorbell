@@ -1,0 +1,38 @@
+@startuml Klassendiagramm
+
+class RaspberryPi {
+    - cameraModule: CameraModule
+}
+
+class CameraModule {
+    - captureImage()
+    - sendImageToFaceRecognition
+}
+
+class FaceRecognition {
+    - recognizePerson()
+    - sendImageToTelegram
+}
+
+class Buzzer {
+    + buzz()
+}
+
+class Relay{}
+
+class Button{
+    + pressButton()
+}
+
+class Telegram{}
+
+RaspberryPi --> CameraModule: contains
+RaspberryPi --> Button: contains
+RaspberryPi --> Buzzer: contains
+RaspberryPi --> Relay
+CameraModule --> FaceRecognition : sendImageToFaceRecognition
+FaceRecognition --> Telegram : sendImageToTelegram
+FaceRecognition --> Relay: activates
+Telegram --> Relay: activates
+
+@enduml

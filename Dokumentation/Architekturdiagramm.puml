@@ -1,0 +1,23 @@
+@startuml Architekturdiagramm
+package "Raspberry Pi System" {
+  [RaspberryPi]
+  [Buzzer]
+  [Relay]
+  [Button]
+  [Camera]
+  [Telegram]
+  [FaceRecognition]
+}
+
+[RaspberryPi] --> [Buzzer]
+[RaspberryPi] --> [Relay]
+[RaspberryPi] --> [Button]
+[RaspberryPi] --> [Camera]
+[RaspberryPi] --> [Telegram]
+
+[Camera] --> [FaceRecognition]: send Image
+[FaceRecognition] --> [Telegram]: send Image
+[FaceRecognition] ..> [Relay]: control Relay
+[Telegram] ..> [Relay]: control Relay
+
+@enduml
